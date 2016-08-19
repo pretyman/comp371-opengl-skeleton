@@ -17,7 +17,7 @@
 #include <algorithm>
 #include <vector>
 #include <cctype>
-
+#include <stdexcept>
 #ifndef M_PI
 #define M_PI        3.14159265358979323846264338327950288   /* pi */
 #endif
@@ -118,30 +118,20 @@ GLuint loadShaders(std::string vertex_shader_path, std::string fragment_shader_p
 	GLuint VertexShaderID = glCreateShader(GL_VERTEX_SHADER);
 	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
-	// Read the Vertex Shader code from the file
-	std::string VertexShaderCode;
-	std::ifstream VertexShaderStream(vertex_shader_path, std::ios::in);
-	if (VertexShaderStream.is_open()) {
-		std::string Line = "";
-		while (getline(VertexShaderStream, Line))
-			VertexShaderCode += "\n" + Line;
-		VertexShaderStream.close();
-	}
-	else {
-		std::cerr << "Impossible to open " << vertex_shader_path << ". Check your program's working directory has the shader files\n";
-		getchar();
-		exit(-1);
-	}
+    // Read the Vertex Shader code from the file
+    std::ifstream VertexShaderStream(vertex_shader_path, std::ios::in);
+    if (!VertexShaderStream) {
+        throw std::invalid_argument("Can't find file: " + vertex_shader_path + " - check that it exists in the working directory of the program");
+    }
+    std::string VertexShaderCode = std::string(std::istreambuf_iterator<char>(VertexShaderStream), std::istreambuf_iterator<char>());
 
-	// Read the Fragment Shader code from the file
-	std::string FragmentShaderCode;
-	std::ifstream FragmentShaderStream(fragment_shader_path, std::ios::in);
-	if (FragmentShaderStream.is_open()) {
-		std::string Line = "";
-		while (getline(FragmentShaderStream, Line))
-			FragmentShaderCode += "\n" + Line;
-		FragmentShaderStream.close();
-	}
+    // Read the Fragment Shader code from the file
+    std::ifstream FragmentShaderStream(fragment_shader_path, std::ios::in);
+    if (!FragmentShaderStream) {
+        throw std::invalid_argument("Can't find file: " + fragment_shader_path + " - check that it exists in the working directory of the program");
+    }
+    std::string FragmentShaderCode = std::string(std::istreambuf_iterator<char>(FragmentShaderStream), std::istreambuf_iterator<char>());
+
 
 	GLint Result = GL_FALSE;
 	int InfoLogLength;
