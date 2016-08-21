@@ -20,6 +20,8 @@ find_package(glew CONFIG REQUIRED)
 
 set(${PROJECT_NAME}_SOURCES
     main.cpp
+    COMP371_hw1.vs
+    COMP371_hw1.fs
 )
 
 add_executable(${PROJECT_NAME}
