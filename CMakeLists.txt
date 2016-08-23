@@ -1,5 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
 
+# force HUNTER_ROOT to always be on the home dir on Windows
+# it would be on C:\Hunter which would be lost during logging out
+# on *NIX system it defaults to $HOME/.hunter
+if(MSVC)
+  set(HUNTER_ROOT "$ENV{HOMEPATH}/.hunter")
+endif()
+
 include("cmake/HunterGate.cmake")
 
 HunterGate(
