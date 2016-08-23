@@ -6,8 +6,6 @@
 #include "glm/gtc/type_ptr.hpp"
 #include "glm/gtc/constants.hpp"
 
-//#include <stdio.h>
-//#include <stdlib.h>
 #include <math.h>
 
 #include <vector>
