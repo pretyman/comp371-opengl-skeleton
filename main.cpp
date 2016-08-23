@@ -252,18 +252,23 @@ void draw() {// wipe the drawing surface clear
 }
 
 int main() {
+	try {
+		initialize();
+	
+		///Load the shaders
+		shader_program = loadShaders("COMP371_hw1.vs", "COMP371_hw1.fs");
+	
+		createTriangleVertexArray();
+	
+		while (!glfwWindowShouldClose(window)) {
+			draw();
+		}
 
-	initialize();
-
-	///Load the shaders
-	shader_program = loadShaders("COMP371_hw1.vs", "COMP371_hw1.fs");
-
-	createTriangleVertexArray();
-
-	while (!glfwWindowShouldClose(window)) {
-		draw();
+		cleanUp();
 	}
-
-	cleanUp();
+	catch (std::exception & ex) {
+		std::cerr << "Exception: " << ex.what() << std::endl;
+		return 1;
+	}
 	return 0;
 }
