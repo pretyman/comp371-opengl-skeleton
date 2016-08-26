@@ -1,8 +1,13 @@
 # COMP371 Skeleton code for Windows, Linux and OSX
+
+[![Build Status](https://travis-ci.org/pretyman/comp371-opengl-skeleton.svg?branch=master)](https://travis-ci.org/pretyman/comp371-opengl-skeleton) [![Build status](https://ci.appveyor.com/api/projects/status/rruwfed8x6wy22xp?svg=true)](https://ci.appveyor.com/project/pretyman/comp371-opengl-skeleton) 
+
 ### CMake based build with instructions be used with:
 * [Visual Studio](https://github.com/pretyman/comp371-opengl-skeleton/wiki/Visual-Studio-Instructions)
 * [Xcode](https://github.com/pretyman/comp371-opengl-skeleton/wiki/Xcode-Instructions)
 * [QtCreator (Linux/OSX)](https://github.com/pretyman/comp371-opengl-skeleton/wiki/QtCreator-Instructions)
+
+This project is based on the [hunter C++ package manager](https://github.com/ruslo/hunter)
 
 ### I know my stuff, what do I really need to do to get this working?
 
